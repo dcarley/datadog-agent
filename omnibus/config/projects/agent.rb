@@ -21,10 +21,12 @@ else
   maintainer 'Datadog Packages <package@datadoghq.com>'
 end
 
-build_version do
-  source :git
-  output_format :dd_agent_format
+if ENV["DD_PACKAGE_VERSION"] != nil
+  build_version ENV["DD_PACKAGE_VERSION"]
+else
+  build_version "0.0.0"
 end
+
 
 build_iteration 1
 
